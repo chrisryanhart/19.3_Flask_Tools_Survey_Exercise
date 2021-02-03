@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+</head>
+<body>
+    <!-- can add if statement with different forms  -->
+    {% if q_count < 4 %}
+    {% for msg in get_flashed_messages() %}
+        <p>{{msg}}</p>
+    {% endfor %}
+    <!-- <p>Now I'm on the question 1 page</p> -->
+    <form action="/questions/{{q_index}}">
+        <!-- add drop down menu with possible answers -->
+        <p>q_index: {{q_index}}</p>
+        <p>q_count: {{q_count}}</p>
+        <p>Question: {{question}}</p>
+        <input type="text" placeholder="answer" name="q{{q_num}}">
+        <button>Next</button>
+    </form>
+    {% else %}
+    {% for msg in get_flashed_messages() %}
+    <p>{{msg}}</p>
+    {% endfor %}
+    <form action="/complete/{{q_index}}">
+        <!-- add drop down menu with possible answers -->
+        <p>q_num: {{q_num}}</p>
+        <p>Question: {{question}}</p>
+        <input type="text" placeholder="answer" name="q{{q_num}}">
+        <button>Next</button>
+    </form>
+
+    {% endif %}
+
+</body>
+</html>
