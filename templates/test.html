@@ -6,6 +6,9 @@
     <title>Test</title>
 </head>
 <body>
+    {% for msg in get_flashed_messages() %}
+    <p>{{msg}}</p>
+    {% endfor %}
     <p>You completed the Survey!</p>
     <p>Response: {{responses}}</p>
     <p>{{test}}</p>
